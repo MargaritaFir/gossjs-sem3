@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const path = require('path')
 
 
-const PORT = 8888;
+const PORT = 5000;
 
 const app = express();
 
@@ -18,12 +18,16 @@ app
 //.use((r, res, next) => console.log(r.url)||next()) //logger here
 .use(morgan('tiny'))
 .post('/name', (req, res)=> {
+	frequency.push('main');
 	res.setHeader('Content-Type', 'application/json; charset=utf-8');
 		
 	res.end( JSON.stringify({"name": req.body.name}) + "\n");
 })
 
-.get('/', r => r.res.sendFile(path.join(__dirname +'/index.html')))
+.get('/', r => {
+	frequency.push('main');
+	r.res.sendFile(path.join(__dirname +'/index.html'))
+})
 
 /*ADD*/
 
