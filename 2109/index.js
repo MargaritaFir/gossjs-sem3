@@ -20,7 +20,7 @@ app
 .post('/name', (req, res)=> {
 	res.setHeader('Content-Type', 'application/json; charset=utf-8');
 		
-	res.end( JSON.stringify({"name": req.body.userName}) + "\n");
+	res.end( JSON.stringify({"name": req.body.name}) + "\n");
 })
 
 .get('/', r => r.res.sendFile(path.join(__dirname +'/index.html')))
