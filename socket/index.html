@@ -1,0 +1,30 @@
+<form enctype="multipart/form-data">
+    <input type="text" name="msg" placeholder="Write message" required />
+    <button type="submit">Send</button>
+</form>
+<h4>Messages:</h4>
+<ul id="messages"></ul>
+<script>
+    const url = 'ws://localhost:1234';
+    const socket = new WebSocket(url);
+    socket.onopen = () => {
+        console.log('connected');
+    };
+    socket.onclose = () => {
+        console.log('closed');
+    };
+    socket.onmessage = ({ data: message }) => {
+        const messagesList = document.querySelector('#messages');
+        const listItem = document.createElement('li');
+        listItem.innerHTML = message;
+        messagesList.appendChild(listItem);
+    };
+    document
+        .querySelector('form')
+        .addEventListener('submit', e => {
+            e.preventDefault();
+            const data = new FormData(e.target);
+            socket.send(data.get('msg'));
+            e.target[0].value = '';
+        });
+</script>
