@@ -5,14 +5,29 @@
 	<title>My EXPRESS Application</title>
 </head>
 <body>
+	<style>
+	h4, h5{
+		margin: 0;
+		padding-left: 20px;
+	}
 
-	<h2>21.09.2018 First express application</h2>
+	#author{
+		margin: 0;
+		padding: 0;
+		margin-bottom: 15px;
+	}
+	.author{
+		padding-left: 20px;
+	}
+	</style>
 
-	<h3>Автор: Фирсова Маргарита</h3>
+	<h2> Express application</h2>
 
-	<a href="https://github.com/MargaritaFir/gossjs-sem3/tree/master/2109"> Код на GitHub</a>
+	<div class="author">
+		<h4 id="author" title="GossJS">Автор: Фирсова Маргарита</h4>
 
-	<h3>Задание 0</h3>
+		<a  href="https://github.com/MargaritaFir/gossjs-sem3/tree/master/2109"> Код на GitHub</a>
+	</div>
 	<pre> 
 	Извлечение значения ключа name из POST-запроса с {"name": "Mememe"}.
 
@@ -21,22 +36,14 @@
 	Например, curl -d "name=yourName" -X POST https://apxpress.herokuapp.com/name
 	</pre>
 
-	<h3>Задание 1</h3>
-
 	<pre>
-    Маршруты для приложения-калькулятора:
-
- 	/add/a/b
-
-  	/subtract/a/b
-
- 	/multiply/a/b
-
- 	/divide/a/b
-
-  	/pow//a/b
-
- 	/kramer/a1/b1/c1/a2/b2/c2
+    <h4>Маршруты для приложения-калькулятора:</h4>
+	<a href="/add/12/3" target="_blank">Add: /add/12/3</a>
+	<a href="/subtract/12/3" target="_blank">Subtract: /subtract/12/3</a>
+	<a href="/multiply/12/3" target="_blank">Multiply: /multiply/12/3</a>
+	<a href="/multiply/12/3" target="_blank">Divide: /multiply/12/3</a>
+	<a href="/pow/12/3" target="_blank">Pow: /pow/12/3</a>
+	<a href="/kramer/2/3/4/1/2/3" target="_blank">Kramer: /kramer/2/3/4/1/2/3</a>
 
 
     Например add/5/6 вернёт 11, а pow/2/3 вернет 8 и т.д.
@@ -44,52 +51,37 @@
     Решение системы уравнений Крамера вернёт JSON вида {"x":13,"y":47}
 	</pre>
 
-	<h3>Задание 2</h3>
 	<pre>
-	Подсчёт частоты посещения маршрутов, с использованием  middleware (use).
-
-	Посмотреть частоту посещаемости можно по пути:
-
-	/freq
-		
+	<h4>MW static для выдачи файлов:</h4>
+	<a href="/static/node.jpg" target="_blank">/static/node.jpg</a>
+	<a href="/static/web.jpg" target="_blank">/static/web.jpg</a>
 	</pre>
 
-	<h3>Задание 3</h3>
 	<pre>
-	MW static для выдачи файлов:
-
-	/static/node.jpg
-
-	/static/web.jpg
+	<h5>Реализация обращения к сервису выдающему информацию о минимальной температуре на завтра (NODE-002)</h5>
+    <a href="/weather" target="_blank">Погода завтра</a>
 	</pre>
 
-	<h3>Задание 4</h3>
-
 	<pre>
-	Дублирование маршрутов there и andba из кодактора:
-
-	/send_number/n
-		
+	<h4>RSS News (NODE-003)</h4>
+	<a href="/node_rss/5" target="_blank">Node News: /node_rss/5</a>
 	</pre>
 
-	<h3>Задание 5</h3>	
 	<pre>
-
-	Исследование логеров.
-
-  	В данном приложении используется логер типа morgan:
-
-  	app.use(morgan('tiny'));
-		
+	<h4>Buffer (NODE-003)</h4>
+	<a href="/buffer" target="_blank">Watch stream data: /buffer</a>
 	</pre>
 
-	<h3>Задание 6</h3>
 	<pre>
-	Реализация обращения к сервису выдающему информацию о минимальной температуре на завтра.
-	По аналогии с тем как это было сделано в прошлом семестре по PHP
+	<h4>Zip stream (GZIP-0001)</h4>
+	<a href="/zip" target="_blank">Zip: /zip</a>
+	</pre>
 
-	/weather
-
+	<pre>
+	<h4>Second Server</h4>
+	<a href="/other_process" target="_blank">Start new process</a>
+	</div>
+	  
 	</pre>
 
 	

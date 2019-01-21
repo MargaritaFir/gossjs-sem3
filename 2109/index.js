@@ -16,7 +16,6 @@ const PORT = 5000;
 
 const app = express();
 
-let frequency = [];
 
 app
 	.use(bodyParser.json())
@@ -26,21 +25,20 @@ app
 
 
 	.post('/name', (req, res)=> {
-		frequency.push('main');
+
 		res.setHeader('Content-Type', 'application/json; charset=utf-8');
 			
 		res.end( JSON.stringify({"name": req.body.name}) + "\n");
 	})
 
 	.get('/', r => {
-		frequency.push('main');
 		r.res.sendFile(path.join(__dirname +'/index.html'))
 	})
 
 	/*ADD*/
 
 	.get('/add/:n1/:n2', (req, res) => {
-		frequency.push('add');
+
 		res
 		.set('Content-Type', 'text/html; charset=utf-8')
 		.send(`<h3> Сумма: ${+req.params.n1 + +req.params.n2} </h3>`)
@@ -49,7 +47,6 @@ app
 	/*SUBTRACT*/
 
 	.get('/subtract/:n1/:n2', (req, res) => {
-		frequency.push('subtract');
 		res
 		.set('Content-Type', 'text/html; charset=utf-8')
 		.send(`<h3> Вычитание: ${+req.params.n1 - +req.params.n2} </h3>`)
@@ -59,7 +56,6 @@ app
 	/*Multiply*/
 
 	.get('/multiply/:n1/:n2', (req, res) => {
-		frequency.push('multiply');
 		res
 		.set('Content-Type', 'text/html; charset=utf-8')
 		.send(`<h3> Умножение: ${+req.params.n1 * +req.params.n2} </h3>`)
@@ -68,7 +64,6 @@ app
 	/*DIVIDE*/
 
 	.get('/divide/:n1/:n2', (req, res) => {
-		frequency.push('divide');
 		res
 		.set('Content-Type', 'text/html; charset=utf-8')
 		.send(`<h3> Деление: ${+req.params.n1 / +req.params.n2} </h3>`)
@@ -77,7 +72,6 @@ app
 	/*POW(N1,N2)*/
 
 	.get('/pow/:n1/:n2', (req, res) => {
-		frequency.push('pow');
 		res
 		.set('Content-Type', 'text/html; charset=utf-8')
 		.send(`<h3> Возведение в степень: ${Math.pow(+req.params.n1,req.params.n2)} </h3>`)
@@ -86,11 +80,9 @@ app
 	/*==KRAMER===*/
 
 	.get('/kramer/:a1/:b1/:c1/:a2/:b2/:c2', (req, res) => {
-		frequency.push('kramer');
 		let det = (+req.params.a1* +req.params.b2) - (+req.params.a2* +req.params.b1);
 		let det1 = (+req.params.c1* +req.params.c2) - (+req.params.a2* +req.params.b1);
 		let det2 = (+req.params.a1* +req.params.c2) - (+req.params.a2* +req.params.c1);
-
 
 		res
 		.set('Content-Type', 'text/html; charset=utf-8')
@@ -105,7 +97,7 @@ app
 	
 			const { data: ax } = await get(URL, {'Content-Type': 'application/json'});
 			const { data: back} = await get(  `https://kodaktor.ru/api2/andba/${ax}`, {'Content-Type': 'application/json'});
-			frequency.push('send_number');
+	
 	res
 	.set('Content-Type', 'text/html; charset=utf-8')
 	.send(`<h3> Ответ с kodaktor.ru: ${back}, промежуточное число: ${ax} </h3>`)
@@ -126,18 +118,6 @@ app
         <h3>Самая низкая температура: ${el1.low}&deg;</h3>`)
   })
 
-
-  /*Подсчёт частоты посещений*/
-.use('/freq', r => {
-	let result = frequency.reduce((obj, el) => {
-		obj[el] = (obj[el] || 0) +1;
-		return obj;
-	}, {});
-	r
-	.set('Content-Type', 'application/json; charset=utf-8')
-	.send( JSON.stringify(result));
-
-})
 
 
 
