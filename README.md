@@ -1,6 +1,6 @@
 
 
-## Фирсова Маргарита, P4262
+# Фирсова Маргарита, P4262
 
  Задания ИТМО, 3 семестр 
 
@@ -27,10 +27,10 @@
 
 - [Repo](2109)
 
-- [Демо на heroku (main page)](https://apxpress.herokuapp.com/)
+- [Демо на heroku (main page with routes for calculator)](https://apxpress.herokuapp.com/)
 
 #### Routes 
- - [Считывание информации из API (NODE-002):](https://apxpress.herokuapp.com/weather)недавно API изменилось, поэтому сейчас не работает
+ - [Считывание информации из API (NODE-002):](https://apxpress.herokuapp.com/weather)  недавно API изменилось, поэтому сейчас не работает
  - [Считывание информации из RSS (NODE-003)](https://apxpress.herokuapp.com/node_rss/5)
  - [Анализ стрима(NODE-004)](https://apxpress.herokuapp.com/buffer)
  - [Созданиие зипующего стрима(GZIP-0001)](https://apxpress.herokuapp.com/zip)
@@ -45,7 +45,7 @@
 
  ### SOCK-001
 #### Чат на socket.io и на ReactPHP (по материалам доклада 30.11.2018)
- - [Repo](socket)
+ - [Socket](socket)
 
 -----
 
