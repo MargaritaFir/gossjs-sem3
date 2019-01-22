@@ -23,6 +23,9 @@ app
 	//.use((r, res, next) => console.log(r.url)||next()) //logger here
 	.use(morgan('tiny'))
 
+  .get('/', r => {
+		r.res.sendFile(path.join(__dirname +'/index.html'))
+	})
 
 	.post('/name', (req, res)=> {
 
@@ -31,9 +34,7 @@ app
 		res.end( JSON.stringify({"name": req.body.name}) + "\n");
 	})
 
-	.get('/', r => {
-		r.res.sendFile(path.join(__dirname +'/index.html'))
-	})
+
 
 	/*ADD*/
 
@@ -91,6 +92,7 @@ app
 
 
    /*Kodaktor*/
+
    .get('/send_number/:n', async(req,res) => {
 
    	const URL = `https://kodaktor.ru/api2/there/${+req.params.n}`
@@ -104,10 +106,8 @@ app
 	})
 
 
- //===== NODE-002 (Погода) =====//
+ /*===== NODE-002 (Погода) =====*/
 
-
-  //weather
   .get('/weather', async(req, res) => {
     const URL = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20woeid%3D%222123260%22)%20and%20u%3D'c'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
     const { data : { query : { results : { channel : { item : { forecast : [ , el1 ] }}}}}} = await get(URL, {'Content-Type' : 'application/json'});
@@ -121,7 +121,7 @@ app
 
 
 
-//===== NODE-003 (RSS) =====//
+/*===== NODE-003 (RSS) =====*/
 
 .get('/node_rss/:n', async (req, res) => {
     let n = +req.params.n;
@@ -136,7 +136,7 @@ app
     res.send(result);
   })
 
-   //===== GZIP-0001 =====//
+   /*===== GZIP-0001 =====*/
 
   .get('/zip', (req, res) => {
     res.sendFile(path.join(__dirname+'/zip.html'));
@@ -149,7 +149,7 @@ app
       .pipe(res);
   })
 
-  //===== NODE-004 =====//
+  /*===== NODE-004 =====*/
 
   .get('/buffer', (req, res) => {
     const URL = 'http://kodaktor.ru/api2/buffer2';
@@ -199,7 +199,7 @@ app
     res.send(`PID: ${PID}, PPID: ${process.pid}`);
   })
 
-/*=== MW Static ===*/
+// MW Static
 
 .use( '/static', express.static('pablic'))
 

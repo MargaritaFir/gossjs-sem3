@@ -1,0 +1,10 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        title= title
+    body
+        each item in items
+            p= item.login
+
+        a(href='/logout') logout
